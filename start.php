@@ -91,7 +91,11 @@
 			"plaintext_message" => $message
 		);
 		
-		return html_email_handler_send_email($options);
+                if ($params === null) {
+                    $params = array(); // For the array_merge to work
+                }
+                
+		return html_email_handler_send_email(array_merge($options, $params));
 	}
 
 	// register default Elgg events
